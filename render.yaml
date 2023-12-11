@@ -5,7 +5,7 @@ services:
     env: python
     buildCommand: pip install -U -r requirements.txt
     startCommand: python3 server.py & python3 -m userbot
-    repo: https://github.com/LavanderProjects/XUserBot
+    repo: https://github.com/talh4tr/XUserBot
     branch: master
     envVars:
       - key: API_ID
