@@ -145,7 +145,7 @@ async def createimage(client, message):
 response = requests.post(url, json=data)
 thenaData = response.json()
 
-  if thenaData["status"] == 200:
+if thenaData["status"] == 200:
     
     async def base64_to_file_async(base64_data, file_path):
       binary_data = base64.b64decode(base64_data)
