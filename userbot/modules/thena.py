@@ -117,12 +117,17 @@ async def createimage(client, message):
 
 
   url = "https://imaginethena-phaticusthiccy.koyeb.app/create_image_thena_v5"
-  data = {
-      "prompt": args,
-      "width": fixed_width,
-      "height": fixed_height,
-      "model": model_name
-  }
+data = {
+    "prompt": args,
+    "width": fixed_width,
+    "height": fixed_height,
+    "model": model_name,
+    "creative": false
+}
+headers = {
+    "user-agent": "THENA"
+}
+
   
   response = requests.post(url, json=data)
   thenaData = response.json()
