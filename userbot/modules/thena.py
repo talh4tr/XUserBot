@@ -116,20 +116,33 @@ async def createimage(client, message):
     model_name = "v5"
 
 
-  url = "https://imaginethena-phaticusthiccy.koyeb.app/create_image_thena_v5"
-data = {
-    "prompt": args,
-    "width": fixed_width,
-    "height": fixed_height,
-    "model": model_name,
-    "creative": false
-}
-headers = {
-    "user-agent": "THENA"
-}
+  def create_image_thena_v5(args, message):
+    url = "https://imaginethena-phaticusthiccy.koyeb.app/create_image_thena_v5"
+    data = {
+        "prompt": args,
+        "width": fixed_width,
+        "height": fixed_height,
+        "model": model_name,
+        "creative": False
+    }
+    headers = {
+        "user-agent": "THENA"
+    }
+    response = requests.post(url, data=data, headers=headers)
+    if response.status_code == 200:
+        image = response.json()["image"]
+        image = base64.b64decode(image)
+        image = BytesIO(image)
+        image.name = "image.png"
+        app.send_photo(message.chat.id, image)
+    else:
+        app.edit_message_text(
+            message.chat.id,
+            message.message_id,
+            f"❗ Bir hata oluştu: {response.text}",
+        )
 
-  
-  response = requests.post(url, json=data)
+response = requests.post(url, json=data)
   thenaData = response.json()
 
   if thenaData["status"] == 200:
