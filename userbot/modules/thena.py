@@ -143,7 +143,7 @@ async def createimage(client, message):
         )
 
 response = requests.post(url, json=data)
-  thenaData = response.json()
+thenaData = response.json()
 
   if thenaData["status"] == 200:
     
