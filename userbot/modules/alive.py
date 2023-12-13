@@ -37,7 +37,7 @@ async def get_readable_time(seconds: int) -> str:
 
 @Client.on_message(filters.command("alive", ".") & filters.me)
 async def am_i_alive(client: Client, message: Message):
-  await message.edit("`Bot is alived!`")
+  await message.edit("Çalışıyorum, Talha! :)")
 
 CmdHelp('alive').add_command(
     'alive', None, "Botun çalışıp çalışmadığını kontrol edebilirsiniz."
